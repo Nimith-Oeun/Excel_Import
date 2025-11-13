@@ -1,7 +1,13 @@
 package com.personal.excelimport.repository;
 
 import com.personal.excelimport.model.MenuItem;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface ProductImportRepository extends JpaRepository<MenuItem, Long> {
+import java.util.List;
+
+public interface ProductImportRepository extends JpaRepository<MenuItem, Long>, PagingAndSortingRepository<MenuItem, Long> {
+    Page<MenuItem> findAllByPrice(double price, Pageable pageable);
 }
